@@ -23,5 +23,6 @@ void Hook_MeleeHit::processHit(RE::Actor* victim, RE::HitData& hitData) {
 void Hook_MainUpdate::Update(RE::Main* a_this, float a2) {
 	guardCounter::GetSingleton()->update();
 	_Update(a_this, a2);
+	
 }
 #pragma endregion

@@ -5,6 +5,7 @@ void MessageHandler(SKSE::MessagingInterface::Message* a_msg)
 	switch (a_msg->type) {
 	case SKSE::MessagingInterface::kDataLoaded:
 		guardCounter::GetSingleton()->loadData();
+		guardCounter::GetSingleton()->readSettings();
 	}
 }
 #if ANNIVERSARY_EDITION
