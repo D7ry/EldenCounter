@@ -35,12 +35,26 @@ private:
 
 };
 
+class Hook_PlayerUpdate
+{
+public:
+	static void install() {
+		REL::Relocation<std::uintptr_t> PlayerCharacterVtbl{ RE::Offset::PlayerCharacter::Vtbl };
+		_Update = PlayerCharacterVtbl.write_vfunc(0xAD, Update);
+		INFO("Player update hook installed");
+	}
+private:
+	static void Update(RE::PlayerCharacter* a_this, float a_delta);
+	static inline REL::Relocation<decltype(Update)> _Update;
+};
+
 class Hooks {
 public:
 	static void install() {
-		SKSE::AllocTrampoline(1 << 5);
+		SKSE::AllocTrampoline(1 << 4);
 		Hook_MeleeHit::install();
-		Hook_MainUpdate::install();
+		//Hook_MainUpdate::install();
+		Hook_PlayerUpdate::install();
 	}
 };
 

@@ -2,8 +2,9 @@
 #include "include/offsets.h"
 #include "include/simpleIni.h"
 void guardCounter::update() {
+	//DEBUG(gc_Timer);
 	if (gc_Timer > 0) {
-		gc_Timer -= *offsets::g_deltaTimeRealTime;
+		gc_Timer -= *offsets::g_deltaTime;
 		if (gc_Timer <= 0) {
 			auto pc = RE::PlayerCharacter::GetSingleton();
 			if (pc) {
@@ -21,8 +22,9 @@ void guardCounter::registerBlock() {
 	if (pc) {
 		pc->AddSpell(gc_triggerSpell);
 		pc->SetGraphVariableBool("Val_GuardCounter", true);
+		//DEBUG("gc time is: {}", gc_Time);
 		gc_Timer = gc_Time;
-		//DEBUG(gc_Timer);
+		//DEBUG("timer set to: {}", gc_Timer);
 	}
 	//RE::DebugNotification("guard counter start!");
 }
@@ -32,7 +34,7 @@ void guardCounter::readSettings() {
 	CSimpleIniA ini;
 #define SETTINGFILE_PATH "Data\\SKSE\\Plugins\\EldenCounter.ini"
 	ini.LoadFile(SETTINGFILE_PATH);
-	gc_Time = ini.GetLongValue("General", "Time");
+	gc_Time = std::stof(ini.GetValue("General", "Time"));
 	INFO("Settings loaded.");
 }
 

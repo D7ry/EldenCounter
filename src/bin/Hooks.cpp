@@ -26,3 +26,11 @@ void Hook_MainUpdate::Update(RE::Main* a_this, float a2) {
 	
 }
 #pragma endregion
+
+#pragma region PlayerUpdate
+void Hook_PlayerUpdate::Update(RE::PlayerCharacter* a_this, float a_delta) {
+	//DEBUG("update");
+	guardCounter::GetSingleton()->update();
+	_Update(a_this, a_delta);
+}
+#pragma endregion
