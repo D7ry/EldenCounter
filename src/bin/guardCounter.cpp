@@ -40,7 +40,7 @@ void guardCounter::readSettings() {
 
 void guardCounter::loadData() {
 	INFO("Loading data...");
-	gc_triggerSpell = RE::TESDataHandler::GetSingleton()->LookupForm<RE::SpellItem>(0x12CE, "EldenCounter.esp");
+	gc_triggerSpell = RE::TESDataHandler::GetSingleton()->LookupForm<RE::SpellItem>(0x801, "EldenCounter.esp");
 	if (!gc_triggerSpell) {
 		ERROR("Error: spell not found! Enable EldenCounter.esp");
 	}
