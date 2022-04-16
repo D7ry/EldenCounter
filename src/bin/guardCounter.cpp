@@ -11,7 +11,6 @@ void guardCounter::update() {
 				pc->RemoveSpell(gc_triggerSpell);
 				pc->SetGraphVariableBool("Val_GuardCounter", false);
 			}
-			//RE::DebugNotification("guard counter stop");
 		}
 	}
 }
@@ -22,9 +21,7 @@ void guardCounter::registerBlock() {
 	if (pc) {
 		pc->AddSpell(gc_triggerSpell);
 		pc->SetGraphVariableBool("Val_GuardCounter", true);
-		//DEBUG("gc time is: {}", gc_Time);
 		gc_Timer = gc_Time;
-		//DEBUG("timer set to: {}", gc_Timer);
 	}
 	//RE::DebugNotification("guard counter start!");
 }

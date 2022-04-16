@@ -3,7 +3,6 @@
 #pragma region MeleeHit
 void Hook_MeleeHit::processHit(RE::Actor* victim, RE::HitData& hitData) {
 	//hitDataProcessor::processHitData(hitData);
-	
 	using HITFLAG = RE::HitData::Flag;
 	auto aggressor = hitData.aggressor.get().get();
 	if (!victim || !aggressor || victim->IsDead()) {
@@ -29,7 +28,6 @@ void Hook_MainUpdate::Update(RE::Main* a_this, float a2) {
 
 #pragma region PlayerUpdate
 void Hook_PlayerUpdate::Update(RE::PlayerCharacter* a_this, float a_delta) {
-	//DEBUG("update");
 	guardCounter::GetSingleton()->update();
 	_Update(a_this, a_delta);
 }
